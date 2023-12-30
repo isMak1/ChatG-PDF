@@ -20,7 +20,7 @@ const SubscriptionButton = (props: Props) => {
   }
   return (
     <div>
-      <Button disabled={loading} onClick={handleSubscription}>
+      <Button disabled={loading} onClick={handleSubscription} variant="outline">
         {props.isPro ? "Manage Subscriptions": "Get Pro Access"}
       </Button>
     </div>
