@@ -15,7 +15,8 @@ const ChatComponent = ({ chatId }: Props) => {
   const { data, isLoading } = useQuery({
     queryKey: ["chat", chatId],
     queryFn: async () => {
-      const response = await axios.post<Message[]>('/api/get-messages', { chatId, 
+      const response = await axios.post<Message[]>('/api/get-messages', {
+        chatId,
       });
       return response.data
     },
@@ -38,13 +39,16 @@ const ChatComponent = ({ chatId }: Props) => {
     }
   }, [messages]);
   return (
-    <div className='relative max-h-screen overflow-scroll' id="message-container">
+    <div className='min-h-[40%] max-h-[100%]' id="message-container">
       {/* Header */}
       <div className="sticky top-0 inset-x-0 p-2 bg-chite h-fit">
         <h3 className="text-xl font-bold">Chat</h3>
       </div>
-      {/* messages list */}
-      <MessageList messages={messages} isLoading={isLoading} />
+      <div className="flex overflow-hidden">
+        {/* messages list */}
+        <MessageList messages={messages} isLoading={isLoading} />
+      </div>
+
 
       <form onSubmit={handleSubmit} className='sticky bottom-0 inset-x-0 px-2 py-4 bg-white'>
         <div className="flex">
