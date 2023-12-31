@@ -1,5 +1,5 @@
 "use client"
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
+import { ChevronDownCircle, ChevronDownIcon, ChevronUpCircle, ChevronUpIcon } from 'lucide-react'
 import React, { useState } from 'react'
 
 type Props = { pdf_url: string }
@@ -7,7 +7,7 @@ type Props = { pdf_url: string }
 const PDFViewer = ({ pdf_url }: Props) => {
   const [isPDFViewerOpen, setIsPDFViewerOpen] = useState(true);
   return (
-    <>
+    <div className="">
       <div className={`${isPDFViewerOpen ? '' : 'hidden'}`}>
         <iframe
           title="PDF Viewer"
@@ -17,20 +17,20 @@ const PDFViewer = ({ pdf_url }: Props) => {
         </iframe>
       </div>
 
-      <div className="pl-[50%] pt-5">
+      <div className="pl-[50%] pt-5 transition-all duration-500">
         <button
           className="focus:outline-none"
           onClick={() => setIsPDFViewerOpen(!isPDFViewerOpen)}
         >
           {isPDFViewerOpen ? (
-            <ChevronDownIcon className="w-10 h-10 text-gray-500" />
+            <ChevronDownCircle className="w-10 h-10 text-gray-500" />
           ) :
             (
-              <ChevronUpIcon className="w-10 h-10 text-gray-500" />
+              <ChevronUpCircle className="w-10 h-10 text-gray-500" />
             )}
         </button>
       </div>
-    </>
+    </div>
 
   )
 }

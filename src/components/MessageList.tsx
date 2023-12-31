@@ -32,8 +32,8 @@ const MessageList = ({ messages, isLoading }: Props) => {
               className={cn(
                 "rounded-lg ox-3 text-sm py-1 px-3 my-2 shadow-md ring-1 ring-gray-900/10",
                 {
-                  'bg-blue-700 shadow-blue-700 text-gray-100': message.role === 'user',
-                  'bg-gray-100 shadow-black text-blue-700': message.role === 'assistant',
+                  'bg-blue-800 shadow-black text-gray-100': message.role === 'user',
+                  'bg-gray-100 shadow-black text-blue-800': message.role === 'assistant',
                 }
               )}
             >
