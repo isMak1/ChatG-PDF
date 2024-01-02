@@ -56,7 +56,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
         <div className="absolute bottom-0 w-full flex-row bg-gray-900">
           <div className='flex w-full px-3 justify-between items-center gap-2 text-sm text-slate-400 '>
             <Link href='/'><Button variant="link">Home</Button></Link>
-            <Link href='/'><Button variant="link">Source</Button></Link>
+            <Link href='https://github.com/isMak1/ChatG-PDF'><Button variant="link">Source</Button></Link>
             <div className="">
               <SubscriptionButton isPro={isPro} />
             </div>
