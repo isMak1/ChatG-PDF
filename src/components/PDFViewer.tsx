@@ -7,7 +7,7 @@ type Props = { pdf_url: string }
 const PDFViewer = ({ pdf_url }: Props) => {
   const [isPDFViewerOpen, setIsPDFViewerOpen] = useState(true);
   return (
-    <div className="">
+    <div className="relative min-w-full">
       <div className={`${isPDFViewerOpen ? '' : 'hidden'}`}>
         <iframe
           title="PDF Viewer"

@@ -63,18 +63,18 @@ const FileUpload = () => {
     },
   });
   return (
-    <div className='gap-y-10'>
+    <div className='gap-y-10 opacity-50'>
       <div
         {...getRootProps({
-          className: ' gap-y-2 border-dashed  rounded-xl cursor-pointer py-8  flex justify-center items-center sm:text-start flex-col bg-gradient-to-r from-rose-100 to-teal-100'
+          className: 'gap-y-2 border-dashed  rounded-xl cursor-pointer py-8  flex justify-center items-center sm:text-start flex-col animate-button bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900'
         })}>
         <input {...getInputProps()} />
         {(uploading || isPending) ? (
           <>
           {/* Loading state */}
-          <Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
+          <Loader2 className="h-10 w-10 text-indigo-400 animate-spin" />
           <p className='mt-2 text-sm text-slate-400'>
-            Spilling Tea to GPT...
+            Feeding Context to GPT
           </p>
           </>
         ) : (

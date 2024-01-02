@@ -36,15 +36,15 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
 
   return (
     <div className='flex h-screen overflow-hidden'>
-      <div className="flex flex-col">
-        <div className="flex w-full max-h-[95%]">
+      <div className="flex flex-col w-full">
+        <div className="flex w-full h-[96%]">
           {/* chat sidebar */}
-          <div className={`w-[50%] max-h-full mx-z-xs`}>
+          <div className={`max-w-[50%] max-h-full mx-z-xs`}>
             <ChatSideBar chats={_chats} chatId={parseInt(chatId)} isPro={isPro} />
           </div>
-          <div className="flex flex-col overflow-hidden">
+          <div className="flex flex-col w-full justify-between">
             {/* pdf viewer */}
-            <div className="max-h-screen p-4">
+            <div className="max-h-[80%] p-4 pb-0">
               <PDFViewer pdf_url={currentChat?.pdfUrl ?? ''} />
             </div>
             {/* chat component */}
@@ -53,7 +53,7 @@ const ChatPage = async ({ params: { chatId } }: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row bg-gray-900">
+        <div className="absolute bottom-0 w-full flex-row bg-gray-900">
           <div className='flex w-full px-3 justify-between items-center gap-2 text-sm text-slate-400 '>
             <Link href='/'><Button variant="link">Home</Button></Link>
             <Link href='/'><Button variant="link">Source</Button></Link>

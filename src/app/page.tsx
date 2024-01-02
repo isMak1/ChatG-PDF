@@ -8,6 +8,8 @@ import SubscriptionButton from '@/components/SubscriptionButton'
 import { db } from '@/lib/db'
 import { chats } from '@/lib/db/schema'
 import { eq } from 'drizzle-orm'
+import Canvas3D from '@/components/Canvas3D'
+
 
 export default async function Home() {
   const { userId } = await auth();
@@ -22,44 +24,54 @@ export default async function Home() {
     }
   }
   return (
-    <div className="w-[100%] min-h-screen bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-sky-500 via-orange-200 to-yellow-600">
-      <div className="absolute right-0 m-3 rounded-full drop-shadow-xl items-center">
-        <UserButton afterSignOutUrl='/' />
-      </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="flex flex-col items-center text-center">
-          <div className="flex items-center">
-            <h1 className="mr-3 lg:text-5xl text-3xl font-semibold">Chat with any PDF</h1>
-          </div>
-          <div className="flex mt-2">
-            {isAuth && firstChat && (
-            <Link href={`/chat/${firstChat.id}`}>
-              <Button>
-                Go To Chats
-                <ArrowRight className='ml-2' />
-              </Button>
-            </Link>
-            )}
-            <div className="ml-3">
-              <SubscriptionButton isPro={isPro} />
+    <>
+      <div className="flex w-[100%] h-screen bg-black">
+        <div className="absolute overflow-hidden max-h-screen right-[-43rem] bottom-[5rem] md:bottom-0 md:right-3">
+          <Canvas3D />
+        </div>
+        <div className="absolute right-2 top-0 m-7  rounded-full drop-shadow-md shadow-white items-center">
+          <UserButton afterSignOutUrl='/' />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="sparky flex gap-10 flex-col items-center text-center">
+            <div className="flex items-center magic">
+              <h1 className="drop-shadow-xl mr-3 xl:text-8xl text-3xl font-semibold animate-background-pan bg-gradient-to-bl from-violet-900 via-indigo-400 to-violet-900">AI PDF Context Chats</h1>
             </div>
-          </div>
-          <p className='max-w-xl mt-1 text-lg text-slate-600'>
-          Discover the groundbreaking AI-driven smart PDF search, revolutionizing research efficiency!
-          </p>
-          <div className='w-full mt-4'>
-            {isAuth ? (
-              <FileUpload />
-            ) : (
-              <Link href="/sign-in">
-                <Button>Login to Get Started
-                  <LogIn className='w-5 h-5 m-2' />
-                </Button>
-              </Link>
-            )}
+            <div className={`flex mt-2 gap-y-10 ${isAuth ? 'flex-col' : 'flex-row gap-x-10'}`}>
+              <div className="flex">
+                {isAuth && firstChat && (
+                  <Link href={`/chat/${firstChat.id}`}>
+                    <Button>
+                      Go To Chats
+                      <ArrowRight className='ml-2' />
+                    </Button>
+                  </Link>
+                )}
+                <div className="ml-3">
+                  <SubscriptionButton isPro={isPro} />
+                </div>
+
+              </div>
+              <div className='w-full'>
+                {isAuth ? (
+                  <FileUpload />
+                ) : (
+                  <Link href="/sign-in">
+                    <Button>Login to Get Started
+                      <LogIn className='w-5 h-5 m-2' />
+                    </Button>
+                  </Link>
+                )}
+              </div>
+
+            </div>
+            <p className='animate-text max-w-xl mt-1 text-xl text-slate-300 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900'>
+              Discover the groundbreaking AI-driven smart PDF search, revolutionizing research efficiency!
+            </p>
+
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
