@@ -45,7 +45,7 @@ export async function GET() {
               name: "ChatPDF Pro",
               description: "Unlimited PDF sessions!",
             },
-            unit_amount: 2000,
+            unit_amount: 999,
             recurring: {
               interval: "month",
             },
